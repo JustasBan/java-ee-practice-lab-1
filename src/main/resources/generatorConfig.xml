@@ -20,6 +20,14 @@
         <table schema="public" tableName="team">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
         </table>
+        <table schema="public" tableName="equipment">
+            <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+        </table>
+        <table schema="public" tableName="training">
+            <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+        </table>
+        <table schema="public" tableName="player_training">
+        </table>
         <table schema="public" tableName="player">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
             <ignoreColumn column="opt_lock_version" />

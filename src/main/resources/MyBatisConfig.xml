@@ -18,5 +18,7 @@
     <mappers>
         <mapper resource="mybatis.xml/TeamMapper.xml"/>
         <mapper resource="mybatis.xml/PlayerMapper.xml"/>
+        <mapper resource="mybatis.xml/EquipmentMapper.xml"/>
+        <mapper resource="mybatis.xml/TrainingMapper.xml"/>
     </mappers>
 </configuration>
