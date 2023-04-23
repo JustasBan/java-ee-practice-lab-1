@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
@@ -16,6 +17,34 @@
         <h:inputText value="#{teams.teamToCreate.name}" required="true" />
         <h:commandButton value="Add new team" actionListener="#{teams.createTeam}" action="index?faces-redirect=true"/>
     </h:form>
+
+    <h2>Trainings:</h2>
+    <h:dataTable value="#{trainings.allTrainings}" var="training">
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Training" />
+            </f:facet>
+            <h:outputText value="#{training.name}" />
+            <h:panelGroup>
+                <ui:repeat value="#{trainings.getLoadPlayers(training.id)}" var="player">
+                    <ul>#{player.name}</ul>
+                </ui:repeat>
+            </h:panelGroup>
+            <h:form>
+                <h:selectOneMenu value="#{playersForTrainings.selectedPlayerId}">
+                    <f:selectItems value="#{playersForTrainings.options}" var="player" itemValue="#{player.value}" itemLabel="#{player.label}" />
+                </h:selectOneMenu>
+                <h:commandButton value="Submit" action="#{playersForTrainings.handleSubmit(training.id)}" />
+            </h:form>
+        </h:column>
+    </h:dataTable>
+
+
+    <h:form>
+        <h:inputText value="#{trainings.trainingToCreate.name}" required="true" />
+        <h:commandButton value="Add new training" actionListener="#{trainings.createTraining}" action="index?faces-redirect=true"/>
+    </h:form>
+
     <h:link outcome="myBatis/teams" value="MyBatis implementation"/>
 </h:body>
 </html>

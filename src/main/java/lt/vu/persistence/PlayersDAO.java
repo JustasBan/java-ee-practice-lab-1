@@ -1,10 +1,12 @@
 package lt.vu.persistence;
 
 import lt.vu.entities.Player;
+import lt.vu.entities.Team;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @ApplicationScoped
 public class PlayersDAO {
@@ -22,5 +24,9 @@ public class PlayersDAO {
 
     public Player update(Player player){
         return em.merge(player);
+    }
+
+    public List<Player> getAllPlayers() {
+        return em.createNamedQuery("Player.findAll", Player.class).getResultList();
     }
 }

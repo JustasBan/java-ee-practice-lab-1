@@ -6,6 +6,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -14,7 +16,7 @@ import java.util.Objects;
 })
 @Table(name = "PLAYER")
 @Getter @Setter
-public class Player implements Serializable {
+public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +36,9 @@ public class Player implements Serializable {
     @Version
     @Column(name = "OPT_LOCK_VERSION")
     private Integer version;
+
+    @ManyToMany(mappedBy = "players")
+    private List<Training> trainings = new ArrayList<>();
 
     public Player() {
     }
