@@ -21,13 +21,10 @@
     <h2>Trainings:</h2>
     <h:dataTable value="#{trainings.allTrainings}" var="training">
         <h:column>
-            <f:facet name="header">
-                <h:outputText value="Training" />
-            </f:facet>
-            <h:outputText value="#{training.name}" />
+            <h:outputText value="Training: #{training.name}" />
             <h:panelGroup>
                 <ui:repeat value="#{trainings.getLoadPlayers(training.id)}" var="player">
-                    <ul>#{player.name}</ul>
+                    <li>Player: #{player.name}</li>
                 </ui:repeat>
             </h:panelGroup>
             <h:form>
@@ -35,6 +32,16 @@
                     <f:selectItems value="#{playersForTrainings.options}" var="player" itemValue="#{player.value}" itemLabel="#{player.label}" />
                 </h:selectOneMenu>
                 <h:commandButton value="Submit" action="#{playersForTrainings.handleSubmit(training.id)}" />
+            </h:form>
+            <br />
+            <h:panelGroup>
+                <ui:repeat value="#{training.equipments}" var="equ">
+                    <li>Equipment: #{equ.name}</li>
+                </ui:repeat>
+            </h:panelGroup>
+            <h:form>
+                <h:inputText value="#{equipmentsForTraining.equipmentToCreate.name}" required="true" />
+                <h:commandButton value="Add new equipment" actionListener="#{equipmentsForTraining.createEquipment(training)}" action="index?faces-redirect=true"/>
             </h:form>
         </h:column>
     </h:dataTable>

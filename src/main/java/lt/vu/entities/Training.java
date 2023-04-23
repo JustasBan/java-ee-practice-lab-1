@@ -15,8 +15,7 @@ import java.util.List;
 })
 @Table(name = "TRAINING")
 @EqualsAndHashCode(of={"name"})
-@Getter
-@Setter
+@Getter @Setter
 public class Training {
 
     public Training(){
@@ -37,5 +36,6 @@ public class Training {
     @Getter @Setter
     private List<Player> players = new ArrayList<>();
 
-
+    @OneToMany(mappedBy = "training")
+    private List<Equipment> equipments = new ArrayList<>();
 }
