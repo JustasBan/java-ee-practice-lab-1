@@ -11,7 +11,7 @@
     <result column="JERSEY_NUMBER" jdbcType="INTEGER" property="jerseyNumber" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="TEAM_ID" jdbcType="INTEGER" property="teamId" />
-    <association property="team" select="selectTeam" javaType="Training"  column="team_id"/>
+    <association property="team" select="selectTeam" javaType="Team"  column="team_id"/>
     <collection property="trainings" javaType="ArrayList"
                 ofType="Training" column="id"
                 select="selectTrainingsForPlayers"/>

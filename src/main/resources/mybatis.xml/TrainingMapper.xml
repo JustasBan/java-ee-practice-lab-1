@@ -8,7 +8,7 @@
       This element was generated on Sun Apr 23 20:32:35 EEST 2023.
     -->
     <id column="ID" jdbcType="INTEGER" property="id" />
-    <result column="TRAIN_NAME" jdbcType="VARCHAR" property="trainName" />
+    <result column="TRAIN_NAME" jdbcType="VARCHAR" property="string" />
     <collection property="players" javaType="ArrayList"
                 ofType="Player" column="id"
                 select="selectPlayersOfTraining"/>
@@ -46,7 +46,7 @@
       This element was generated on Sun Apr 23 20:32:35 EEST 2023.
     -->
     insert into PUBLIC.TRAINING (TRAIN_NAME)
-    values (#{trainName,jdbcType=VARCHAR})
+    values (#{string,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="lt.vu.mybatis.model.Training">
     <!--
@@ -55,7 +55,7 @@
       This element was generated on Sun Apr 23 20:32:35 EEST 2023.
     -->
     update PUBLIC.TRAINING
-    set TRAIN_NAME = #{trainName,jdbcType=VARCHAR}
+    set TRAIN_NAME = #{string,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">

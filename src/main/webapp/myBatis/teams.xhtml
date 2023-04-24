@@ -22,7 +22,7 @@
     <h2>Trainings:</h2>
     <h:dataTable value="#{trainingsMyBatis.allTrainings}" var="training">
         <h:column>
-            <b><h:outputText value="Training: #{training.trainName}" /></b>
+            <b><h:outputText value="Training: #{training.string}" /></b>
             <h:panelGroup>
                 <ui:repeat value="#{trainings.getLoadPlayers(training.id)}" var="player">
                     <li>Player: #{player.name}</li>
@@ -49,7 +49,7 @@
         </h:column>
     </h:dataTable>
     <h:form>
-        <h:inputText value="#{trainingsMyBatis.trainingToCreate.trainName}" required="true" />
+        <h:inputText value="#{trainingsMyBatis.trainingToCreate.string}" required="true" />
         <h:commandButton value="Add new training" actionListener="#{trainingsMyBatis.createTraining}" action="teams.xhtml?faces-redirect=true" />
     </h:form>
     <br />

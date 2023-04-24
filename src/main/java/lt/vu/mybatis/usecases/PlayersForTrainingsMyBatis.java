@@ -57,7 +57,7 @@ public class PlayersForTrainingsMyBatis {
         options = new ArrayList<>();
         loadAllPlayers();
         for (Player player : playersAll) {
-            String label = player.getName();
+            String label = player.getName() + " " + player.getTeam().getName();
             this.options.add(new SelectItem(player.getId(), label));
         }
     }
