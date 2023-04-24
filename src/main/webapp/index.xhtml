@@ -21,7 +21,7 @@
     <h2>Trainings:</h2>
     <h:dataTable value="#{trainings.allTrainings}" var="training">
         <h:column>
-            <h:outputText value="Training: #{training.name}" />
+            <b><h:outputText value="Training: #{training.name}" /></b>
             <h:panelGroup>
                 <ui:repeat value="#{trainings.getLoadPlayers(training.id)}" var="player">
                     <li>Player: #{player.name}</li>
@@ -43,9 +43,12 @@
                 <h:inputText value="#{equipmentsForTraining.equipmentToCreate.name}" required="true" />
                 <h:commandButton value="Add new equipment" actionListener="#{equipmentsForTraining.createEquipment(training)}" action="index?faces-redirect=true"/>
             </h:form>
+            <br />
+            <br />
         </h:column>
-    </h:dataTable>
 
+    </h:dataTable>
+    <br/>
 
     <h:form>
         <h:inputText value="#{trainings.trainingToCreate.name}" required="true" />

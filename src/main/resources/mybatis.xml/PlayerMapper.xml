@@ -11,7 +11,30 @@
     <result column="JERSEY_NUMBER" jdbcType="INTEGER" property="jerseyNumber" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="TEAM_ID" jdbcType="INTEGER" property="teamId" />
+    <association property="team" select="selectTeam" javaType="Training"  column="team_id"/>
+    <collection property="trainings" javaType="ArrayList"
+                ofType="Training" column="id"
+                select="selectTrainingsForPlayers"/>
   </resultMap>
+
+  <select id="selectTrainingsForPlayers" resultType="Training">
+    SELECT c.id, c.train_name
+    FROM public.training c
+    JOIN public.player_training sc on c.id = sc.training_id
+    WHERE sc.player_id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectTeam" resultType="Team">
+    SELECT c.id, c.name
+    FROM public.team c
+    WHERE c.id = #{team_id,jdbcType=INTEGER}
+  </select>
+
+  <insert id="addPlayerToTraining" parameterType="map">
+    insert into PUBLIC.player_training (training_id, player_id)
+    values (#{trainingId,jdbcType=INTEGER}, #{playerId,jdbcType=INTEGER})
+  </insert>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - @mbg.generated

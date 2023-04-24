@@ -9,7 +9,18 @@
     -->
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <collection property="players" javaType="ArrayList"
+                ofType="Player" column="id"
+                select="selectPlayersOfTeam"/>
   </resultMap>
+
+  <select id="selectPlayersOfTeam" resultType="Player">
+    SELECT c.id, c.name
+    FROM public.player c
+           JOIN public.team sc on c.team_id = sc.id
+    WHERE sc.id = #{id,jdbcType=INTEGER}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - @mbg.generated

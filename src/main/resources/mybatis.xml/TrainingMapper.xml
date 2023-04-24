@@ -9,7 +9,27 @@
     -->
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="TRAIN_NAME" jdbcType="VARCHAR" property="trainName" />
+    <collection property="players" javaType="ArrayList"
+                ofType="Player" column="id"
+                select="selectPlayersOfTraining"/>
+    <collection property="equipments" javaType="ArrayList"
+                ofType="Equipment" column="id"
+                select="selectEquipmentsOfTraining"/>
   </resultMap>
+
+  <select id="selectEquipmentsOfTraining" resultType="Equipment">
+    SELECT c.id, c.name
+    FROM public.equipment c
+    WHERE c.training_id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectPlayersOfTraining" resultType="Player">
+    SELECT c.id, c.name
+    FROM public.player c
+    JOIN public.player_training sc on c.id = sc.player_id
+    WHERE sc.training_id = #{id,jdbcType=INTEGER}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - @mbg.generated

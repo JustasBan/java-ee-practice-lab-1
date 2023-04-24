@@ -6,6 +6,8 @@
     <typeAliases>
         <typeAlias type="lt.vu.mybatis.model.Team" alias="Team"/>
         <typeAlias type="lt.vu.mybatis.model.Player" alias="Player"/>
+        <typeAlias type="lt.vu.mybatis.model.Training" alias="Training"/>
+        <typeAlias type="lt.vu.mybatis.model.Equipment" alias="Equipment"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
