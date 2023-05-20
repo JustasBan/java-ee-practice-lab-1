@@ -38,4 +38,8 @@ public class Training {
 
     @OneToMany(mappedBy = "training")
     private List<Equipment> equipments = new ArrayList<>();
+
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
 }

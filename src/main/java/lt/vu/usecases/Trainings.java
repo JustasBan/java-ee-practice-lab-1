@@ -34,6 +34,14 @@ public class Trainings {
         this.trainingsDAO.persist(trainingToCreate);
     }
 
+    @Inject
+    private IDefaultName defaultName;
+
+    @Transactional
+    public void createTrainingDefault(){
+        trainingToCreate.setName(defaultName.getDefaultName());
+        this.trainingsDAO.persist(trainingToCreate);
+    }
 
     @Transactional
     public void addPlayerToTraining(Integer playerId, Integer trainingId) {

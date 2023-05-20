@@ -43,4 +43,11 @@ public class TrainingsDAO {
         }
         return new ArrayList<>();
     }
+    public Training findOne(Integer id){
+        return em.find(Training.class, id);
+    }
+
+    public Training update(Training training){
+        return em.merge(training);
+    }
 }

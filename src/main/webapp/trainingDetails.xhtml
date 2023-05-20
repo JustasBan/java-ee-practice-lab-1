@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core"
+>
+<h:head/>
+<h:body>
+    <h2>Name: #{updateTrainingName.training.name}</h2>
+    <h2>ID: #{updateTrainingName.training.id}</h2>
+    <h:form>
+        <h:outputText value="name: "/>
+        <h:inputText a:placeholder="enter the value" value="#{updateTrainingName.training.name}" required="true" />
+        <h:commandButton value="update" action="#{updateTrainingName.updateName()}">
+            <f:param name="training" value="#{updateTrainingName.training.id}" />
+        </h:commandButton>
+        <h:outputText value="Name was changed by other user. Repeat the update to overwrite it" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
+    </h:form>
+    <h:form>
+        <h:outputText value="#{generateTrainingName.nameGenerationStatus}" />
+        <h:commandButton value="Random name generator" disabled="#{generateTrainingName.nameGenerationRunning}" action="#{generateTrainingName.generateRandomName()}">
+            <f:param name="trainingId" value="#{updateTrainingName.training.id}" />
+        </h:commandButton>
+    </h:form>
+</h:body>
+</html>

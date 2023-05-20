@@ -8,5 +8,10 @@
 
     <interceptors>
         <class>lt.vu.interceptors.MethodLogger</class>
+        <class>lt.vu.interceptors.PerformanceInterceptor</class>
     </interceptors>
+    <alternatives>
+        <!--<class>lt.vu.services.NameGeneratorAlternative</class>-->
+        <class>lt.vu.services.NameGenerator</class>
+    </alternatives>
 </beans>

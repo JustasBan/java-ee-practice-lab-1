@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @ApplicationScoped
-@Path("/players")
+@Path("/players2")
 public class PlayersController {
 
     @Inject
